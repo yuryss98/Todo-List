@@ -11,11 +11,11 @@ function corDeFundo(event) {
 function criarLista() {
   const valor = input.value;
   const listas = document.createElement('li');
-  listas.classList = 'testando';
+  listas.classList = 'color';
   listaOrdenada.appendChild(listas);
   listas.innerText = valor;
   limpar();
-  const test1 = document.getElementsByClassName('testando');
+  const test1 = document.getElementsByClassName('color');
   for (let i = 0; i < test1.length; i += 1) {
     test1[i].addEventListener('click', corDeFundo);
   }
