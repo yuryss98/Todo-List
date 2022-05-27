@@ -4,20 +4,25 @@ const listaOrdenada = document.querySelector('#lista-tarefas');
 function limpar() {
   input.value = '';
 }
-function corDeFundo(event) {
+function colorBackground(event) {
+  const color = document.getElementsByTagName('li');
+  for (let i = 0; i < color.length; i += 1) {
+    if (color[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      color[i].style.backgroundColor = 'white';
+    }
+  }
   const alvo = event;
   alvo.target.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 function criarLista() {
   const valor = input.value;
   const listas = document.createElement('li');
-  listas.classList = 'color';
   listaOrdenada.appendChild(listas);
   listas.innerText = valor;
   limpar();
-  const test1 = document.getElementsByClassName('color');
-  for (let i = 0; i < test1.length; i += 1) {
-    test1[i].addEventListener('click', corDeFundo);
+  const buscarLi = document.getElementsByTagName('li');
+  for (let i = 0; i < buscarLi.length; i += 1) {
+    buscarLi[i].addEventListener('click', colorBackground);
   }
 }
 btn.addEventListener('click', criarLista);
