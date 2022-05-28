@@ -3,12 +3,21 @@ const btn = document.getElementById('criar-tarefa');
 const listaOrdenada = document.querySelector('#lista-tarefas');
 const buscarLi = document.getElementsByTagName('li');
 const btnClear = document.getElementById('apaga-tudo');
+const btnFinalizados = document.getElementById('remover-finalizados');
 function limpar() {
   input.value = '';
 }
 function clearList() {
   listaOrdenada.innerHTML = '';
 }
+function finalizados() {
+  for (let i = buscarLi.length - 1; i >= 0; i -= 1) {
+    if (buscarLi[i].className === 'completed') {
+      buscarLi[i].remove();
+    }
+  }
+}
+btnFinalizados.addEventListener('click', finalizados);
 btnClear.addEventListener('click', clearList);
 function colorBackground(event) {
   const color = document.getElementsByTagName('li');
