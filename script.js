@@ -1,6 +1,7 @@
 const input = document.getElementById('texto-tarefa');
 const btn = document.getElementById('criar-tarefa');
 const listaOrdenada = document.querySelector('#lista-tarefas');
+const buscarLi = document.getElementsByTagName('li');
 function limpar() {
   input.value = '';
 }
@@ -14,15 +15,25 @@ function colorBackground(event) {
   const alvo = event;
   alvo.target.style.backgroundColor = 'rgb(128, 128, 128)';
 }
+function riscaElemento(event) {
+  const alvo = event;
+  if (alvo.target.className === 'completed') {
+    alvo.target.classList.remove('completed');
+  } else {
+    alvo.target.classList.add('completed');
+  }
+}
 function criarLista() {
   const valor = input.value;
   const listas = document.createElement('li');
   listaOrdenada.appendChild(listas);
   listas.innerText = valor;
   limpar();
-  const buscarLi = document.getElementsByTagName('li');
   for (let i = 0; i < buscarLi.length; i += 1) {
     buscarLi[i].addEventListener('click', colorBackground);
+  }
+  for (let i = 0; i < buscarLi.length; i += 1) {
+    buscarLi[i].addEventListener('dblclick', riscaElemento);
   }
 }
 btn.addEventListener('click', criarLista);
