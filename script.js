@@ -2,9 +2,14 @@ const input = document.getElementById('texto-tarefa');
 const btn = document.getElementById('criar-tarefa');
 const listaOrdenada = document.querySelector('#lista-tarefas');
 const buscarLi = document.getElementsByTagName('li');
+const btnClear = document.getElementById('apaga-tudo');
 function limpar() {
   input.value = '';
 }
+function clearList() {
+  listaOrdenada.innerHTML = '';
+}
+btnClear.addEventListener('click', clearList);
 function colorBackground(event) {
   const color = document.getElementsByTagName('li');
   for (let i = 0; i < color.length; i += 1) {
