@@ -5,6 +5,8 @@ const buscarLi = document.getElementsByTagName('li');
 const btnClear = document.getElementById('apaga-tudo');
 const btnFinalizados = document.getElementById('remover-finalizados');
 const btnSalvar = document.getElementById('salvar-tarefas');
+const moverParaCima = document.getElementById('mover-cima');
+const moverParaBaixo = document.getElementById('mover-baixo');
 function limpar() {
   input.value = '';
 }
@@ -92,7 +94,37 @@ function resgataItensSalvos() {
     adcionaEventos();
   }
 }
+function paraCima() {
+  for (let i = 0; i < buscarLi.length; i += 1) {
+    if (buscarLi[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      if (buscarLi[i].className === 'completed') {
+        buscarLi[i].classList.remove('completed');
+        buscarLi[i].previousSibling.classList.add('completed');
+      }
+      const guardaTexto = buscarLi[i].innerText;
+      buscarLi[i].innerText = buscarLi[i].previousSibling.innerText;
+      buscarLi[i].previousSibling.innerText = guardaTexto;
+      buscarLi[i].style.backgroundColor = 'white';
+      buscarLi[i].previousSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+  }
+}
+function paraBaixo() {
+  for (let i = 0; i < buscarLi.length; i += 1) {
+    if (buscarLi[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      if (buscarLi[i].className === 'completed') {
+        buscarLi[i].classList.remove('completed');
+        buscarLi[i].nextSibling.classList.add('completed');
+      }
+      const guardaTexto = buscarLi[i].innerText;
+      buscarLi[i].innerText = buscarLi[i].nextSibling.innerText;
+      buscarLi[i].nextSibling.innerText = guardaTexto;
+      buscarLi[i].style.backgroundColor = 'white';
+      // buscarLi[i].nextSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+  }
+}
+moverParaCima.addEventListener('click', paraCima);
+moverParaBaixo.addEventListener('click', paraBaixo);
 
-window.onload = function aleatoria() {
-  resgataItensSalvos();
-};
+window.onload = resgataItensSalvos;
