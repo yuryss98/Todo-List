@@ -84,7 +84,7 @@ function resgataItensSalvos() {
   const dadosComClasse = JSON.parse(localStorage.getItem('dadosComClasse'));
   for (let i = 0; i < dados.length; i += 1) {
     const createElement = document.createElement('li');
-    if (dados[i].includes(dadosComClasse)) {
+    if (dadosComClasse.includes(dados[i])) {
       createElement.classList.add('completed');
     }
     createElement.innerText = dados[i];
