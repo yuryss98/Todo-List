@@ -97,6 +97,9 @@ function resgataItensSalvos() {
 function paraCima() {
   for (let i = 0; i < buscarLi.length; i += 1) {
     if (buscarLi[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      if (buscarLi[i] === buscarLi[0]) {
+        break;
+      }
       if (buscarLi[i].className === 'completed') {
         buscarLi[i].classList.remove('completed');
         buscarLi[i].previousSibling.classList.add('completed');
@@ -110,8 +113,11 @@ function paraCima() {
   }
 }
 function paraBaixo() {
-  for (let i = 0; i < buscarLi.length; i += 1) {
+  for (let i = buscarLi.length - 1; i >= 0; i -= 1) {
     if (buscarLi[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      if (buscarLi[i] === buscarLi[buscarLi.length - 1]) {
+        break;
+      }
       if (buscarLi[i].className === 'completed') {
         buscarLi[i].classList.remove('completed');
         buscarLi[i].nextSibling.classList.add('completed');
@@ -120,7 +126,7 @@ function paraBaixo() {
       buscarLi[i].innerText = buscarLi[i].nextSibling.innerText;
       buscarLi[i].nextSibling.innerText = guardaTexto;
       buscarLi[i].style.backgroundColor = 'white';
-      // buscarLi[i].nextSibling.style.backgroundColor = 'rgb(128, 128, 128)';
+      buscarLi[i].nextSibling.style.backgroundColor = 'rgb(128, 128, 128)';
     }
   }
 }
