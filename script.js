@@ -7,6 +7,15 @@ const btnFinalizados = document.getElementById('remover-finalizados');
 const btnSalvar = document.getElementById('salvar-tarefas');
 const moverParaCima = document.getElementById('mover-cima');
 const moverParaBaixo = document.getElementById('mover-baixo');
+const removerSelecionado = document.getElementById('remover-selecionado');
+function btnRemoveSelect() {
+  for (let i = 0; i < buscarLi.length; i += 1) {
+    if (buscarLi[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      buscarLi[i].remove();
+    }
+  }
+}
+removerSelecionado.addEventListener('click', btnRemoveSelect);
 function limpar() {
   input.value = '';
 }
